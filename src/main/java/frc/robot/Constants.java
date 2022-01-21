@@ -13,7 +13,40 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-     // CONTROLLERS
-     public final static int BIGBOI = 1;
-     public final static int XBOX = 0;
+    // CONTROLLERS
+    public final static int BIGBOI = 1;
+    public final static int XBOX = 0;
+
+    // MOTORS
+    public final static int FRONT_RIGHT_SPEED_MOTOR = 0;
+    public final static int FRONT_LEFT_SPEED_MOTOR = 1;
+    public final static int BACK_RIGHT_SPEED_MOTOR = 1;
+    public final static int BACK_LEFT_SPEED_MOTOR = 1;
+
+    public final static int FRONT_RIGHT_ANGLE_MOTOR = 0;
+    public final static int FRONT_LEFT_ANGLE_MOTOR = 1;
+    public final static int BACK_RIGHT_ANGLE_MOTOR = 1;
+    public final static int BACK_LEFT_ANGLE_MOTOR = 1;
+
+
+    // SENSOR PORTS
+    public final static int RELAY_PORT = 1;
+    public final static int ENCODER_PORT_1 = 2;
+    public final static int ENCODER_PORT_2 = 3;
+
+    // SPEEDS
+    public final static double ENCODER_SPEED = 0.3;
+    public final static double DRIVE_TO_WALL_MAX = 0.6;
+    public final static double DRIVE_TO_WALL_MIN = 0.3;
+    public final static double GYRO_TURN_MAX = 0.7;
+    public final static double GYRO_TURN_MIN = 0.35;
+    public final static double DRIVE_FOR_TIME_SPEED = 0.5;
+
+    // OTHER
+    public final static int ENCODER_COUNTS_PER_REV = 2048;
+    public final static int WHEEL_DIAMETER = 6;
+    
+    // How much time the relay stays on
+    public final static double RELAY_STOP_TIME = 0.5;
+
 }
