@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** Command that watches controllers and handles default drive functions */
-public class DriveCommand extends CommandBase {
+public class SwerveDriveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
   private final SwerveDrive m_driveTrain;
@@ -81,7 +81,7 @@ public class DriveCommand extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public DriveCommand(SwerveDrive p_driveTrain, Joystick p_xbox) {
+  public SwerveDriveCommand(SwerveDrive p_driveTrain, Joystick p_xbox) {
     // set the MEMBER "m_" variable equal to the PARAMETER var "p_"
     m_driveTrain = p_driveTrain;
     m_xboxController = p_xbox;

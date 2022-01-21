@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 // LOCAL IMPORTS
-import frc.robot.commands.DriveCommand;
+import frc.robot.commands.SwerveDriveCommand;
 import frc.robot.subsystems.SwerveDrive;
 
 /**
@@ -38,7 +38,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     // SETTING DEFAULT COMMANDS
-    m_drivetrain.setDefaultCommand(new DriveCommand(m_drivetrain, m_xboxController));
+    m_drivetrain.setDefaultCommand(new SwerveDriveCommand(m_drivetrain, m_xboxController));
 
   }
 

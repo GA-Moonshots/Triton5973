@@ -17,7 +17,7 @@ public final class Constants {
     public final static int BIGBOI = 1;
     public final static int XBOX = 0;
 
-    // MOTORS
+    // SWERVE MOTORS
     public final static int FRONT_RIGHT_SPEED_MOTOR = 0;
     public final static int FRONT_LEFT_SPEED_MOTOR = 1;
     public final static int BACK_RIGHT_SPEED_MOTOR = 1;
@@ -27,6 +27,12 @@ public final class Constants {
     public final static int FRONT_LEFT_ANGLE_MOTOR = 1;
     public final static int BACK_RIGHT_ANGLE_MOTOR = 1;
     public final static int BACK_LEFT_ANGLE_MOTOR = 1;
+
+    // MECHANUM MOTORS
+    public final static int MOTOR1 = 0;
+    public final static int MOTOR2 = 1;
+    public final static int MOTOR3 = 2;
+    public final static int MOTOR4 = 3;
 
 
     // SENSOR PORTS
