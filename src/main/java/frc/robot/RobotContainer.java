@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 // LOCAL IMPORTS
-import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.commands.SwerveCommand;
 import frc.robot.subsystems.SwerveDrive;
+import frc.robot.commands.MechanumCommand;
+import frc.robot.subsystems.MechanumDrive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,6 +27,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // these are private member variables (hence the "m_" and are not to be made static or public)
   private final SwerveDrive m_drivetrain = new SwerveDrive();
+  // private final SwerveDrive m_drivetrain = new MechanumDrive();
+
   //private final AutoCommand m_autoCommand;
   private final Joystick m_xboxController = new Joystick(Constants.XBOX);
 
@@ -38,7 +42,8 @@ public class RobotContainer {
     configureButtonBindings();
 
     // SETTING DEFAULT COMMANDS
-    m_drivetrain.setDefaultCommand(new SwerveDriveCommand(m_drivetrain, m_xboxController));
+    m_drivetrain.setDefaultCommand(new SwerveCommand(m_drivetrain, m_xboxController));
+    // m_drivetrain.setDefaultCommand(new MechanumCommand(m_drivetrain, m_xboxController));
 
   }
 

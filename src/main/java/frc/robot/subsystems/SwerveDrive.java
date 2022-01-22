@@ -46,23 +46,18 @@ public class SwerveDrive extends SubsystemBase  {
         addChild("backRightAngleMotor Motor",  backRightAngleMotor);
         addChild("backLeftAngleMotor Motor",   backLeftAngleMotor);
 
-        frontRightSpeedMotor.setInverted(false);
-        frontLeftSpeedMotor.setInverted(false);
+        frontRightSpeedMotor.setInverted(true);
+        frontLeftSpeedMotor.setInverted(true);
         backRightSpeedMotor.setInverted(false);
         backLeftSpeedMotor.setInverted(false);
 
         frontRightAngleMotor.setInverted(false);
-        frontLeftSAngleMotor.setInverted(false);
+        frontLeftAngleMotor.setInverted(false);
         backRightAngleMotor.setInverted(false);
-        backLeftAngleMotor.setInverted(false);
-        
-        frontRightAngleMotor.set(ControlMode.Position, 0);
-        frontLeftSAngleMotor.set(ControlMode.Position, 0);
-        backRightAngleMotor.set(ControlMode.Position,  0);
-        backLeftAngleMotor.set(ControlMode.Position,   0);
-
+        backLeftAngleMotor.setInverted(true);
+    
         frontRightAngleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog);
-        frontLeftSAngleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog);
+        frontLeftAngleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog);
         backRightAngleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog);
         backLeftAngleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog);
         
@@ -71,8 +66,40 @@ public class SwerveDrive extends SubsystemBase  {
         backRightSpeedMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         backLeftSpeedMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
+        //turn off ramping for angleMotors
+        backLeftAngleMotor.configOpenloopRamp(0);
+        backLeftAngleMotor.configClosedloopRamp(0);
+
+        backRightAngleMotor.configOpenloopRamp(0);
+        backRightAngleMotor.configClosedloopRamp(0);
+
+        frontLeftAngleMotor.configOpenloopRamp(0);
+        frontLeftAngleMotor.configClosedloopRamp(0);
+
+        frontRightAngleMotor.configOpenloopRamp(0);
+        frontRightAngleMotor.configClosedloopRamp(0);
+
 		gyro = new ADXRS450_Gyro();
 		gyro.reset();
+
+        configureEncoders();
     }
+
+    
+    private void configureEncoders() {
+
+        frontRightEncoder = new Encoder(4, 5);
+        frontLeftEncoder  = new Encoder(6, 7);
+        backRightEncoder  = new Encoder(2, 3);
+        backLeftEncoder   = new Encoder(0, 1);
+        
+        final double TICKS_TO_DEGREES = 1.12;
+
+        frontRightEncoder.setDistancePerPulse(1./TICKS_TO_DEGREES);
+        frontLeftEncoder.setDistancePerPulse(1./TICKS_TO_DEGREES);
+        backRightEncoder.setDistancePerPulse(1./TICKS_TO_DEGREES);
+        backLeftEncoder.setDistancePerPulse(1./TICKS_TO_DEGREES);
+    }
+
 
 }
