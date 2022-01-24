@@ -17,7 +17,20 @@ public class SwerveDriveCommand extends CommandBase {
   private final SwerveDrive m_driveTrain;
   private final Joystick m_xboxController;
 
-  private final double SPEED = 0.7;
+  private final double SPEED = 0.4;
+
+  private static final int lastTime = 0;
+  
+  // private boolean drivePOV = false;
+  private boolean safeMode = false;
+
+  private final double L = 23; //vehicle tracklength
+  private final double W = 23; //vehicle trackwidth
+  private final double R = Math.sqrt(Math.pow(L, 2) + Math.pow(W, 2));
+  private final double PI = Math.PI; 
+  
+  private double positionAlongField = 0;
+  private double positionAcrossField = 0;
     
   private double KpDrive = 0.04;
   private double KiDrive = 0;
@@ -73,8 +86,7 @@ public class SwerveDriveCommand extends CommandBase {
   private PIDController pidAnglebl;
   private PIDController pidAnglebr;
 
-  // private boolean drivePOV = false;
-  private boolean safeMode = false;
+
 
   /**
    * Creates a new DriveCommand.
@@ -120,11 +132,47 @@ public class SwerveDriveCommand extends CommandBase {
     
     }
 
+    double forwardtemp = axis("forward");
+    double strafetemp = axis("strafe");
+    double rotatetemp = axis("rotate");
+    
+    //set controller deadzones
+    if(Math.abs(axis("forward")) < 0.1) {
+        
+        forwardtemp = 0;
 
-    calculateDrive(axis("forward"), axis("strafe"), axis("rotate"), gyro.getAngle());
+    } else {
+        
+        forwardtemp = axis("forward");
+    }
+
+    if (Math.abs(axis("strafe")) < 0.2) {
+        
+        strafetemp = 0;
+
+    } else {
+        
+        strafetemp = axis("strafe");
+
+    }
+    
+    if (Math.abs(axis("rotate")) < 0.2) {
+        
+        rotatetemp = 0;
+
+    } else {
+        
+        rotatetemp = axis("rotate");
+
+    }
+
+    System.out.println("forwardtemp: " + forwardtemp);
+    System.out.println("strafetemp:  " + strafetemp);
+    System.out.println("rotatetemp:  " + rotatetemp);
+
+    calculateDrive(forwardtemp, strafetemp, rotatetemp, gyro.getAngle());
     
   }
-
 
   private void configurePID() {
 		
@@ -140,18 +188,13 @@ public class SwerveDriveCommand extends CommandBase {
 
 	}
 
-        
+ 
   private void calculateDrive(double FWD, double STR, double RCW, double gryroAngle) {
        
     double temp = FWD*Math.cos(gryroAngle) + STR*Math.sin(gryroAngle);
     
     STR = -FWD*Math.sin(gryroAngle) + STR*Math.cos(gryroAngle);
     FWD = temp;
-
-    final double PI = Math.PI;
-    final double L = 0; //TODO find vehicle wheelbase //units don't matter as it's a ratio
-    final double W = 0; //TODO find vehicle trackwidth
-    final double R = Math.sqrt(Math.pow(L, 2) + Math.pow(W, 2));
 
     double A = STR - RCW*(L/R);
     double B = STR + RCW*(L/R);
@@ -163,10 +206,10 @@ public class SwerveDriveCommand extends CommandBase {
     double backLeftWheelSpeed   = Math.sqrt(Math.pow(A, 2) + Math.pow(D, 2));
     double backRightWheelSpeed  = Math.sqrt(Math.pow(A, 2) + Math.pow(C, 2));
 
-    double frontRightWheelAngle = Math.atan2(B, C) * (180 / PI);
-    double frontLeftWheelAngle  = Math.atan2(B, D) * (180 / PI);
-    double backLeftWheelAngle   = Math.atan2(A, D) * (180 / PI);
-    double backRightWheelAngle  = Math.atan2(A, C) * (180 / PI);
+    double frontRightWheelAngle = (Math.atan2(B, C) * (180 / PI));
+    double frontLeftWheelAngle  = -(Math.atan2(B, D) * (180 / PI));
+    double backLeftWheelAngle   = (Math.atan2(A, D) * (180 / PI));
+    double backRightWheelAngle  = -(Math.atan2(A, C) * (180 / PI));
 
     double max = frontRightWheelSpeed;
 
@@ -187,27 +230,33 @@ public class SwerveDriveCommand extends CommandBase {
 
     }
 
-    frontRightWheelSpeed = max * SPEED;
-    frontLeftWheelSpeed  = max * SPEED;
-    backLeftWheelSpeed   = max * SPEED;
-    backRightWheelSpeed  = max * SPEED;
-    //set wheel speed
-    m_driveTrain.frontRightSpeedMotor.set(frontRightWheelSpeed);
-    m_driveTrain.frontLeftSpeedMotor.set(frontLeftWheelSpeed);
-    m_driveTrain.backRightSpeedMotor.set(backLeftWheelSpeed);
-    m_driveTrain.backLeftSpeedMotor.set(backRightWheelSpeed);
+    frontRightWheelSpeed = (max * SPEED); 
+    frontLeftWheelSpeed  = (max * SPEED); 
+    backLeftWheelSpeed   = (max * SPEED); 
+    backRightWheelSpeed  = (max * SPEED);
 
-    //convert angle to talon ticks to set final angle/ 4096 ticks
-    frontRightWheelAngle = ((frontRightWheelAngle + 180) * (4095 / 360));
-    frontLeftWheelAngle  = ((frontLeftWheelAngle  + 180) * (4095 / 360));
-    backLeftWheelAngle   = ((backLeftWheelAngle   + 180) * (4095 / 360));
-    backRightWheelAngle  = ((backRightWheelAngle  + 180) * (4095 / 360));
-    //set wheel angle
-    m_driveTrain.frontRightAngleMotor.set(ControlMode.Position, frontRightWheelAngle);
-    m_driveTrain.frontLeftSAngleMotor.set(ControlMode.Position, frontLeftWheelAngle);
-    m_driveTrain.backRightAngleMotor.set(ControlMode.Position,  backLeftWheelAngle);
-    m_driveTrain.backLeftAngleMotor.set(ControlMode.Position,   backRightWheelAngle);
+    frontRightSpeedMotor.set(frontRightWheelSpeed);
+    frontLeftSpeedMotor.set(frontLeftWheelSpeed);
+    backRightSpeedMotor.set(backLeftWheelSpeed);
+    backLeftSpeedMotor.set(backRightWheelSpeed);
+    
+    // backLeftAngleMotor.set(pidAnglebl.calculate(backLeftEncoder.getDistance(), backLeftWheelAngle));
+    // backRightAngleMotor.set(pidAnglebr.calculate(backRightEncoder.getDistance(), backRightWheelAngle));
+    // frontRightAngleMotor.set(pidAnglefr.calculate(frontRightEncoder.getDistance(), frontRightWheelAngle));
+    // frontLeftAngleMotor.set(pidAnglefl.calculate(frontLeftEncoder.getDistance(), frontLeftWheelAngle));
+
+    setOptmizedAngle(backLeftEncoder,   backLeftAngleMotor,   backLeftSpeedMotor,   pidAnglebl, backLeftWheelAngle);
+    setOptmizedAngle(backRightEncoder,  backRightAngleMotor,  backRightSpeedMotor,  pidAnglebr, backRightWheelAngle);
+    setOptmizedAngle(frontRightEncoder, frontRightAngleMotor, frontRightSpeedMotor, pidAnglefr, frontRightWheelAngle);
+    setOptmizedAngle(frontLeftEncoder,  frontLeftAngleMotor,  frontLeftSpeedMotor,  pidAnglefl, frontLeftWheelAngle);
+
+    // resetAfterFullRotation(backLeftEncoder);
+    // resetAfterFullRotation(backRightEncoder);
+    // resetAfterFullRotation(frontRightEncoder);
+    // resetAfterFullRotation(frontLeftEncoder);
+    
 }
+
 
 
 
@@ -224,7 +273,7 @@ public class SwerveDriveCommand extends CommandBase {
 		builder.addDoubleProperty("IAngle", () -> KiAngle, (value) -> KiAngle = value);
 		builder.addDoubleProperty("DAngle", () -> KdAngle, (value) -> KdAngle = value);
 
-		builder.addDoubleProperty("Forward", () -> axis("forward"), null);
+		builder.addDoubleProperty("Forward", () -> Constants.AXIS_FWD, null);
 		builder.addDoubleProperty("Strafe", () -> axis("strafe"), null);
 		builder.addDoubleProperty("Rotate", () -> axis("Rotate"), null);
 		builder.addDoubleProperty("prevAngle", () -> prevAngle, null);
