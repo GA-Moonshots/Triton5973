@@ -43,7 +43,8 @@ public class MechanumDrive extends CommandBase {
   @Override
   public void execute() {
     double r = Math.hypot(m_xboxController.getX(), m_xboxController.getY());
-    double robotAngle = Math.atan2(m_xboxController.getY(), m_xboxController.getX()) - Math.PI / 4;
+    double robotAngle = Math.atan2(m_xboxController.getY(), m_xboxController.getX());
+    // - Math.PI / 4;
     double rightX = m_xboxController.getX(right);
     final double v1 = r * Math.cos(robotAngle) + rightX;
     final double v2 = r * Math.sin(robotAngle) - rightX;
