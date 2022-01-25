@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
 
 /** An example command that uses an example subsystem. */
-public class MechanumDrive extends CommandBase {
+public class MechanumCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   
   private final WPI_TalonSRX m_frontLeftMotor;
@@ -23,7 +23,7 @@ public class MechanumDrive extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public MechanumDriveCommand(WPI_TalonSRX p_frontLeftMotor, WPI_TalonSRX p_frontRightMotor, WPI_TalonSRX p_backLeftMotor, WPI_TalonSRX p_backRightMotor, Joystick p_xbox) {
+  public MechanumCommand(WPI_TalonSRX p_frontLeftMotor, WPI_TalonSRX p_frontRightMotor, WPI_TalonSRX p_backLeftMotor, WPI_TalonSRX p_backRightMotor, Joystick p_xbox) {
 
     m_frontLeftMotor = p_frontLeftMotor;
     m_frontRightMotor = p_frontRightMotor;
