@@ -57,4 +57,18 @@ public final class Constants {
     // How much time the relay stays on
     public final static double RELAY_STOP_TIME = 0.5;
 
+    // XBOX BUTTON IDS
+    public final static int A = 1;
+    public final static int B = 2;
+    public final static int X = 3;
+    public final static int Y = 4;
+    public final static int L_BUMP = 5;
+    public final static int R_BUMP = 6;
+    public final static int SELECT = 7;
+    public final static int START = 8;
+    public final static int LEFT_JOYSTICK_BUTTON = 9;
+    public final static int RIGHT_JOYSTICK_BUTTON = 10;
+
+
+
 }

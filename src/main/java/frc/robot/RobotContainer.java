@@ -55,13 +55,17 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //define + instantiate buttons
-    final JoystickButton a = new JoystickButton(m_xboxController, 1);
-    final JoystickButton b = new JoystickButton(m_xboxController, 2);
-    final JoystickButton x = new JoystickButton(m_xboxController, 3);
-    final JoystickButton y = new JoystickButton(m_xboxController, 4);
-    final JoystickButton lBump = new JoystickButton(m_xboxController, 5);
-    final JoystickButton rBump = new JoystickButton(m_xboxController, 6);
-
+    final JoystickButton a = new JoystickButton(m_xboxController, Constants.A);
+    final JoystickButton b = new JoystickButton(m_xboxController, Constants.B);
+    final JoystickButton x = new JoystickButton(m_xboxController, Constants.X);
+    final JoystickButton y = new JoystickButton(m_xboxController, Constants.Y);
+    final JoystickButton lBump = new JoystickButton(m_xboxController, Constants.L_BUMP);
+    final JoystickButton rBump = new JoystickButton(m_xboxController, Constants.R_BUMP);
+    final JoystickButton select = new JoystickButton(m_xboxController, Constants.SELECT);
+    final JoystickButton start = new JoystickButton(m_xboxController, Constants.START);
+    final JoystickButton leftJoystick = new JoystickButton(m_xboxController, Constants.LEFT_JOYSTICK_BUTTON);
+    final JoystickButton rightJoystick = new JoystickButton(m_xboxController, Constants.RIGHT_JOYSTICK_BUTTON);
+    
     //assign buttons to commands
     // a.whenPressed(new RelayCommand());
     // b.whenPressed(new GyroTurn(m_drivetrain, 90));
