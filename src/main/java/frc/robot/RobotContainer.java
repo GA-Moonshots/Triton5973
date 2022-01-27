@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.commands.SwerveCommand;
 // import frc.robot.subsystems.SwerveDrive;
 import frc.robot.commands.BallThrowerCommand;
+import frc.robot.commands.BallThrowerOffCommand;
 // import frc.robot.commands.MechanumCommand;
 import frc.robot.subsystems.BallThrower;
 // import frc.robot.subsystems.MechanumDrive;
@@ -73,6 +74,7 @@ public class RobotContainer {
     
     //assign buttons to commands
     b.whenPressed(new BallThrowerCommand(m_thrower));
+    x.whenPressed(new BallThrowerOffCommand(m_thrower));
     // a.whenPressed(new RelayCommand());
     // b.whenPressed(new GyroTurn(m_drivetrain, 90));
     // x.whenPressed(new GyroTurn(m_drivetrain, -90));

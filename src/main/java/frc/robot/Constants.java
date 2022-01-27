@@ -38,7 +38,7 @@ public final class Constants {
     public final static int MOTOR4 = 3;
 
     // OTHER MOTOR PORTS
-    public final static int BALL_THROWER = 8;
+    public final static int BALL_THROWER_PORT = 8;
 
     // SENSOR PORTS
     public final static int RELAY_PORT = 1;
@@ -72,6 +72,8 @@ public final class Constants {
     public final static int LEFT_JOYSTICK_BUTTON = 9;
     public final static int RIGHT_JOYSTICK_BUTTON = 10;
 
-
+    // BALL THROWER CONSTANTS
+    public final static double BALL_THROWER_SPEED = 1.0;
+    public final static double BALL_THROWER_OFF = 0;
 
 }

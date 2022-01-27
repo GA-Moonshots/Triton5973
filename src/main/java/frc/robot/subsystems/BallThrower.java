@@ -14,8 +14,7 @@ public class BallThrower extends SubsystemBase {
     public final Jaguar m_motor;
   /** Creates a new ExampleSubsystem. */
     public BallThrower() {
-        m_motor = new Jaguar(Constants.BALL_THROWER);
+        m_motor = new Jaguar(Constants.BALL_THROWER_PORT);
     }
-
 
 }

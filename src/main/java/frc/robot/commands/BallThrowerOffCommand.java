@@ -9,7 +9,7 @@ import frc.robot.subsystems.BallThrower;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class BallThrowerCommand extends CommandBase {
+public class BallThrowerOffCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final BallThrower m_thrower;
   private boolean turnOff = false;
@@ -20,7 +20,7 @@ public class BallThrowerCommand extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
 
-  public BallThrowerCommand(BallThrower subsystem) {
+  public BallThrowerOffCommand(BallThrower subsystem) {
     m_thrower = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -33,7 +33,7 @@ public class BallThrowerCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_thrower.m_motor.set(Constants.BALL_THROWER_SPEED);
+    m_thrower.m_motor.set(Constants.BALL_THROWER_OFF);
     turnOff = true;
   }
 
