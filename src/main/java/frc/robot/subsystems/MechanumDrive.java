@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.Constants;
 
-public class MechanumDriveTrain extends SubsystemBase {
+public class MechanumDrive extends SubsystemBase {
   /** Creates a new Drive Subsystem. */
 
   // Declare + instantiate gyro
@@ -41,7 +41,7 @@ public class MechanumDriveTrain extends SubsystemBase {
     private final WPI_TalonSRX m_frontRightMotor1;
     private final WPI_TalonSRX m_backRightMotor2;
 
-  public MechanumDriveTrain() {
+  public MechanumDrive() {
     // Instantiate differential drive
     m_frontLeftMotor = new WPI_TalonSRX(Constants.MOTOR1);
     m_backLeftMotor = new WPI_TalonSRX(Constants.MOTOR2);

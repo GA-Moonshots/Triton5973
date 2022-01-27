@@ -4,18 +4,22 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 // LOCAL IMPORTS
-import frc.robot.commands.SwerveCommand;
-import frc.robot.subsystems.SwerveDrive;
-import frc.robot.commands.MechanumCommand;
-import frc.robot.subsystems.MechanumDrive;
+// import frc.robot.commands.SwerveCommand;
+// import frc.robot.subsystems.SwerveDrive;
+import frc.robot.commands.BallThrowerCommand;
+// import frc.robot.commands.MechanumCommand;
+import frc.robot.subsystems.BallThrower;
+// import frc.robot.subsystems.MechanumDrive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,7 +30,8 @@ import frc.robot.subsystems.MechanumDrive;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // these are private member variables (hence the "m_" and are not to be made static or public)
-  private final SwerveDrive m_drivetrain = new SwerveDrive();
+  //private final SwerveDrive m_drivetrain = new SwerveDrive();
+  private final BallThrower m_thrower = new BallThrower();
   // private final SwerveDrive m_drivetrain = new MechanumDrive();
 
   //private final AutoCommand m_autoCommand;
@@ -42,7 +47,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     // SETTING DEFAULT COMMANDS
-    m_drivetrain.setDefaultCommand(new SwerveCommand(m_drivetrain, m_xboxController));
+    // m_drivetrain.setDefaultCommand(new SwerveCommand(m_drivetrain, m_xboxController));
     // m_drivetrain.setDefaultCommand(new MechanumCommand(m_drivetrain, m_xboxController));
 
   }
@@ -67,6 +72,7 @@ public class RobotContainer {
     final JoystickButton rightJoystick = new JoystickButton(m_xboxController, Constants.RIGHT_JOYSTICK_BUTTON);
     
     //assign buttons to commands
+    b.whenPressed(new BallThrowerCommand(m_thrower));
     // a.whenPressed(new RelayCommand());
     // b.whenPressed(new GyroTurn(m_drivetrain, 90));
     // x.whenPressed(new GyroTurn(m_drivetrain, -90));

@@ -14,8 +14,8 @@ package frc.robot;
  */
 public final class Constants {
     // CONTROLLERS
-    public final static int BIGBOI = 1;
-    public final static int XBOX = 0;
+    public final static int BIGBOI = 2;
+    public final static int XBOX = 1;
 
     // SWERVE MOTORS
     public final static int FRONT_RIGHT_SPEED_MOTOR = 0;
@@ -36,6 +36,9 @@ public final class Constants {
     public final static int MOTOR2 = 1;
     public final static int MOTOR3 = 2;
     public final static int MOTOR4 = 3;
+
+    // OTHER MOTOR PORTS
+    public final static int BALL_THROWER = 8;
 
     // SENSOR PORTS
     public final static int RELAY_PORT = 1;
