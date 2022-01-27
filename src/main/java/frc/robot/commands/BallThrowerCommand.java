@@ -31,12 +31,7 @@ public class BallThrowerCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("ON");
-    if (m_thrower != null) {
-        System.out.println("Motor");
-    }
     m_thrower.m_motor.set(1.0);
-
   }
 
   // Called once the command ends or is interrupted.
