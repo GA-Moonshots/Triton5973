@@ -33,7 +33,8 @@ public class BallThrowerOffCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_thrower.m_motor.set(Constants.BALL_THROWER_OFF);
+    m_thrower.m_largeMotor.set(Constants.BALL_THROWER_OFF);
+    m_thrower.m_smallMotor.set(Constants.BALL_THROWER_OFF);
     turnOff = true;
   }
 

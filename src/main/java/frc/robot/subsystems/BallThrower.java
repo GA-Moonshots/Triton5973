@@ -11,10 +11,10 @@ import frc.robot.Constants;
 
 public class BallThrower extends SubsystemBase {
 
-    public final Jaguar m_motor;
+    public final Jaguar m_largeMotor, m_smallMotor;
   /** Creates a new ExampleSubsystem. */
     public BallThrower() {
-        m_motor = new Jaguar(Constants.BALL_THROWER_PORT);
+        m_largeMotor = new Jaguar(Constants.BALL_THROWER_LARGE_WHEEL_PORT);
+        m_smallMotor = new Jaguar(Constants.BALL_THROWER_SMALL_WHEEL_PORT);
     }
-
 }
