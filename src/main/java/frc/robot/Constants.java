@@ -98,7 +98,7 @@ public final class Constants {
     public final static double RELAY_STOP_TIME = 0.5;
 
     // BALL THROWER CONSTANTS
-    public final static double BALL_THROWER_LARGE_WHEEL_SPEED = 0.5;
+    public final static double BALL_THROWER_LARGE_WHEEL_SPEED = -1;
     public final static double BALL_THROWER_SMALL_WHEEL_SPEED = 1;
     public final static double BALL_THROWER_OFF = 0;
 
