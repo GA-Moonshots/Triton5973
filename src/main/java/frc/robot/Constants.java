@@ -57,6 +57,8 @@ public final class Constants {
     // OTHER MOTOR PORTS
     public final static int BALL_THROWER_LARGE_WHEEL_PORT = 7;
     public final static int BALL_THROWER_SMALL_WHEEL_PORT = 5;
+    public final static int INTAKE_PORT = 8;
+
     // SENSOR PORTS
     public final static int RELAY_PORT = 1;
     public final static int ENCODER_PORT_1 = 2;
@@ -101,5 +103,8 @@ public final class Constants {
     public final static double BALL_THROWER_LARGE_WHEEL_SPEED = -1;
     public final static double BALL_THROWER_SMALL_WHEEL_SPEED = 1;
     public final static double BALL_THROWER_OFF = 0;
+
+    // INTAKE THROWER CONSTANTS
+    public final static double INTAKE_WHEEL_SPEED = 0.7;
 
 }
