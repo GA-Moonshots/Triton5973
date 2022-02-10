@@ -5,12 +5,12 @@ import frc.robot.subsystems.BallThrower;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class IntakeOffCommand extends CommandBase{
+public class ThrowerBackCommand extends CommandBase{
     
-    private final Intake m_intake;
+    private final BallThrower m_intake;
     private boolean turnOff;
 
-    public IntakeOffCommand(Intake subsystem) {
+    public ThrowerBackCommand(BallThrower subsystem) {
         m_intake = subsystem;
         // Use addRequirements() here to declare subsystem dependencies.
         // addRequirements(subsystem);
@@ -25,8 +25,7 @@ public class IntakeOffCommand extends CommandBase{
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_intake.m_intakeMotor.set(Constants.INTAKE_OFF_WHEEL_SPEED);
-        m_intake.m_intakeSmallMotor.set(Constants.INTAKE_OFF_WHEEL_SPEED);
+        m_intake.m_smallMotor.set(Constants.BALL_THROWER_BACK_WHEEL_SPEED);
         turnOff = true;
     }
 

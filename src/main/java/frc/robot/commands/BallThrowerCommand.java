@@ -34,7 +34,7 @@ public class BallThrowerCommand extends CommandBase {
   @Override
   public void execute() {
     m_thrower.m_largeMotor.set(Constants.BALL_THROWER_FRONT_WHEEL_SPEED);
-    m_thrower.m_smallMotor.set(Constants.BALL_THROWER_BACK_WHEEL_SPEED);
+    // m_thrower.m_smallMotor.set(Constants.BALL_THROWER_BACK_WHEEL_SPEED);
     turnOff = true;
   }
 

@@ -20,6 +20,8 @@ import frc.robot.commands.BallThrowerCommand;
 import frc.robot.commands.BallThrowerOffCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakeOffCommand;
+import frc.robot.commands.ThrowerBackCommand;
+import frc.robot.commands.ThrowerBackOffCommand;
 // import frc.robot.commands.MechanumCommand;
 import frc.robot.subsystems.BallThrower;
 // import frc.robot.subsystems.MechanumDrive;
@@ -40,7 +42,7 @@ public class RobotContainer {
   // private final SwerveDrive m_drivetrain = new MechanumDrive();
 
   //private final AutoCommand m_autoCommand;
-  private final Joystick m_xboxController = new Joystick(Constants.XBOX);
+  private final Joystick m_xboxController = new Joystick(Constants.BIGBOI);
 
   // Static stuff hosted here for easy access 
   private final static Joystick bigJoystick = new Joystick(Constants.BIGBOI);
@@ -77,10 +79,12 @@ public class RobotContainer {
     final JoystickButton rightJoystick = new JoystickButton(m_xboxController, Constants.RIGHT_JOYSTICK_BUTTON);
     
     //assign buttons to commands
-    b.whenPressed(new BallThrowerCommand(m_thrower));
-    x.whenPressed(new BallThrowerOffCommand(m_thrower));
-    // x.whenPressed(new IntakeCommand(m_intake));
-    // y.whenPressed(new IntakeOffCommand(m_intake));
+    a.whenPressed(new BallThrowerCommand(m_thrower));
+    b.whenPressed(new BallThrowerOffCommand(m_thrower));
+    x.whenPressed(new ThrowerBackCommand(m_thrower));
+    y.whenPressed(new ThrowerBackOffCommand(m_thrower));
+    lBump.whileHeld(new IntakeOffCommand(m_intake));
+    rBump.whenPressed(new IntakeCommand(m_intake));
     
   }
 

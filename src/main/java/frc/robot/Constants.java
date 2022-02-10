@@ -19,7 +19,7 @@ public final class Constants {
     // --------------
 
     // CONTROLLERS
-    public final static int BIGBOI = 2;
+    public final static int BIGBOI = 0;
     public final static int XBOX = 1;
 
     // SWERVE MOTORS
@@ -58,6 +58,7 @@ public final class Constants {
     public final static int BALL_THROWER_FRONT_WHEELS_PORT = 1;
     public final static int BALL_THROWER_BACK_WHEELS_PORT = 0;
     public final static int INTAKE_PORT = 2;
+    public final static int INTAKE_SMALL_PORT = 3;
 
     // SENSOR PORTS
     public final static int RELAY_PORT = 1;
@@ -101,11 +102,12 @@ public final class Constants {
 
     // BALL THROWER CONSTANTS
     public final static double BALL_THROWER_FRONT_WHEEL_SPEED = 1;
-    public final static double BALL_THROWER_BACK_WHEEL_SPEED = -0.2;
+    public final static double BALL_THROWER_BACK_WHEEL_SPEED = -0.3;
     public final static double BALL_THROWER_OFF = 0;
 
     // INTAKE THROWER CONSTANTS
-    public final static double INTAKE_WHEEL_SPEED = 0.7;
+    public final static double INTAKE_WHEEL_SPEED = 1;
+    public final static double INTAKE_BACK_WHEEL_SPEED = -1;
     public final static double INTAKE_OFF_WHEEL_SPEED = 0;
 
 }

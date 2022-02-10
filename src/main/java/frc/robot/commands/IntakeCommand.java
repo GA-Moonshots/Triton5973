@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
+import frc.robot.subsystems.BallThrower;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -25,6 +26,7 @@ public class IntakeCommand extends CommandBase{
     @Override
     public void execute() {
         m_intake.m_intakeMotor.set(Constants.INTAKE_WHEEL_SPEED);
+        m_intake.m_intakeSmallMotor.set(Constants.INTAKE_BACK_WHEEL_SPEED);
         turnOff = true;
     }
 
