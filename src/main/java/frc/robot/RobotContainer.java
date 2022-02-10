@@ -18,9 +18,12 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.subsystems.SwerveDrive;
 import frc.robot.commands.BallThrowerCommand;
 import frc.robot.commands.BallThrowerOffCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.IntakeOffCommand;
 // import frc.robot.commands.MechanumCommand;
 import frc.robot.subsystems.BallThrower;
 // import frc.robot.subsystems.MechanumDrive;
+import frc.robot.subsystems.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,6 +36,7 @@ public class RobotContainer {
   // these are private member variables (hence the "m_" and are not to be made static or public)
   //private final SwerveDrive m_drivetrain = new SwerveDrive();
   private final BallThrower m_thrower = new BallThrower();
+  private final Intake m_intake = new Intake();
   // private final SwerveDrive m_drivetrain = new MechanumDrive();
 
   //private final AutoCommand m_autoCommand;
@@ -73,8 +77,10 @@ public class RobotContainer {
     final JoystickButton rightJoystick = new JoystickButton(m_xboxController, Constants.RIGHT_JOYSTICK_BUTTON);
     
     //assign buttons to commands
-    b.whenPressed(new BallThrowerCommand(m_thrower));
-    x.whenPressed(new BallThrowerOffCommand(m_thrower));
+    a.whenPressed(new BallThrowerCommand(m_thrower));
+    b.whenPressed(new BallThrowerOffCommand(m_thrower));
+    x.whenPressed(new IntakeCommand(m_intake));
+    y.whenPressed(new IntakeOffCommand(m_intake));
     // a.whenPressed(new RelayCommand());
     // b.whenPressed(new GyroTurn(m_drivetrain, 90));
     // x.whenPressed(new GyroTurn(m_drivetrain, -90));
