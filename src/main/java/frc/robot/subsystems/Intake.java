@@ -8,6 +8,6 @@ public class Intake {
     public final Jaguar m_intakeMotor;
 
     public Intake() {
-        m_intakeMotor = new Jaguar(Constants.BALL_THROWER_LARGE_WHEEL_PORT);
+        m_intakeMotor = new Jaguar(Constants.INTAKE_PORT);
     }
 }

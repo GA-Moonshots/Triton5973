@@ -77,16 +77,11 @@ public class RobotContainer {
     final JoystickButton rightJoystick = new JoystickButton(m_xboxController, Constants.RIGHT_JOYSTICK_BUTTON);
     
     //assign buttons to commands
-    a.whenPressed(new BallThrowerCommand(m_thrower));
-    b.whenPressed(new BallThrowerOffCommand(m_thrower));
-    x.whenPressed(new IntakeCommand(m_intake));
-    y.whenPressed(new IntakeOffCommand(m_intake));
-    // a.whenPressed(new RelayCommand());
-    // b.whenPressed(new GyroTurn(m_drivetrain, 90));
-    // x.whenPressed(new GyroTurn(m_drivetrain, -90));
-    // y.whenPressed(new GyroTurn(m_drivetrain, 45));
-    // lBump.whenPressed(new DriveToWall(m_drivetrain, 20));
-    // rBump.whenPressed(new EncoderCommand(m_drivetrain, 12));
+    b.whenPressed(new BallThrowerCommand(m_thrower));
+    x.whenPressed(new BallThrowerOffCommand(m_thrower));
+    // x.whenPressed(new IntakeCommand(m_intake));
+    // y.whenPressed(new IntakeOffCommand(m_intake));
+    
   }
 
   /**
